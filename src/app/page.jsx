@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useRef, useEffect, useCallback } from 'react';
-import { parseSRT, formatTimecode, formatShort } from '@/lib/parseSRT';
-import { stitchAudio } from '@/lib/audioUtils';
+import { parseSRT, formatTimecode, formatShort } from '../lib/parseSRT';
+import { stitchAudio } from '../lib/audioUtils';
 
 // ─── Voice options ─────────────────────────────────────────────────────────────
 const VOICES = [
