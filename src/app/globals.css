@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-bebas:     'Bebas Neue', sans-serif;
+  --font-dm-sans:   'DM Sans', sans-serif;
+  --font-jetbrains: 'JetBrains Mono', monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background-color: #0c0c0e;
+  color: #e8e8e2;
+  font-family: var(--font-dm-sans);
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #141416;
+}
+::-webkit-scrollbar-thumb {
+  background: #333338;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #f0a830;
+}
+
+/* Timeline row entrance */
+@keyframes rowIn {
+  from { opacity: 0; transform: translateX(-6px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.row-enter {
+  animation: rowIn 0.25s ease both;
+}
+
+/* Pulse for generating state */
+@keyframes pulseAmber {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+.pulse-amber {
+  animation: pulseAmber 1.2s ease-in-out infinite;
+}
+
+/* Scanline overlay on header */
+@keyframes scan {
+  0%   { background-position: 0 0; }
+  100% { background-position: 0 100%; }
+}
+.scanlines::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 3px,
+    rgba(0,0,0,0.08) 3px,
+    rgba(0,0,0,0.08) 4px
+  );
+  pointer-events: none;
+}
+
+/* Progress bar fill */
+.progress-fill {
+  transition: width 0.4s ease;
+}
+
+/* Drag drop zone active */
+.drop-active {
+  border-color: #f0a830 !important;
+  background-color: rgba(240, 168, 48, 0.05) !important;
+}
+
+/* Audio waveform bars (decorative) */
+@keyframes wavebar {
+  0%, 100% { transform: scaleY(0.3); }
+  50%       { transform: scaleY(1); }
+}
+.wave-bar {
+  display: inline-block;
+  width: 3px;
+  background: #f0a830;
+  border-radius: 1px;
+  transform-origin: bottom;
+  animation: wavebar 0.8s ease-in-out infinite;
+}
+.wave-bar:nth-child(2) { animation-delay: 0.15s; height: 14px; }
+.wave-bar:nth-child(3) { animation-delay: 0.3s;  height: 10px; }
+.wave-bar:nth-child(4) { animation-delay: 0.45s; height: 16px; }
+.wave-bar:nth-child(5) { animation-delay: 0.6s;  height: 8px;  }
